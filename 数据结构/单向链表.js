@@ -1,3 +1,4 @@
+// element 用来保存节点上的数据，next用来保存指向下一个节点的链接
 function Node(element) {
   this.element = element
   this.next = null
@@ -32,7 +33,7 @@ function remove(item) {
 // 查找前一个节点
 function findPrev(item) {
   var currNode = this.head
-  while(currNode.next !== null && currMode.next.element !== item) {
+  while(currNode.next !== null && currNode.next.element !== item) {
     currNode = currNode.next
   }
   return currNode
@@ -46,7 +47,8 @@ function display() {
   }
 }
 
-function LList() {
+function singlyLinkedList() {
+  // head节点的next属性被初始化为null
   this.head = new Node('head')
   this.find = find
   this.insert = insert
@@ -54,3 +56,14 @@ function LList() {
   this.findPrev = findPrev
   this.display = display
 }
+
+// test
+var cities = new singlyLinkedList()
+cities.insert('Conway', 'head')
+cities.insert('Russll', 'Conway')
+cities.insert('Ala', 'Russll')
+cities.display()
+cities.remove('Russll')
+cities.display()
+
+module.exports = singlyLinkedList
