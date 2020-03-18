@@ -82,30 +82,26 @@ function getMaxLengthNum(str) {
 var myAtoi = function(str) {
   var str = str.trim()
   var char = str.charAt(0)
+  var INT_MAX = Math.pow(2, 31)
+  var temp = ''
   if (char == '-' && str != '-') {
-    var temp = getMaxLengthNum(str.slice(1)).pop()
-    if (temp > Math.pow(2, 32) - 1) {
-      return '-2147483648'
-    } else {
-      return '-' + temp
-    }
-  } else if (char == '+' && str != '+') {
-    var temp = getMaxLengthNum(str.slice(1)).pop()
-    if (temp > Math.pow(2, 32) - 1) {
-      return '2147483648'
-    } else {
-      return temp
-    }
-  } else if (char.match(/(^[0-9]+)/)) {
-    var temp = getMaxLengthNum(str).pop()
-    if (temp > Math.pow(2, 32) - 1) {
-      return '2147483648'
-    } else {
-      return temp
-    }
-  } else {
-    return '0'
+    temp = getMaxLengthNum(str.slice(1))
+    if (!temp) return '0'
+    if (temp[0] > INT_MAX) return '-2147483648'
+    return '-' + temp[0]
   }
+  if (char == '+' && str != '+') {
+    temp = getMaxLengthNum(str.slice(1))
+    if (!temp) return '0'
+    if (temp[0] > INT_MAX - 1) return '2147483647'
+    return temp[0]
+  }
+  if (char.match(/(^[0-9]+)/)) {
+    temp = getMaxLengthNum(str)
+    if (temp[0] > INT_MAX - 1) return '2147483647'
+    return temp[0]
+  }
+  return '0'
 };
 // @lc code=end
 
