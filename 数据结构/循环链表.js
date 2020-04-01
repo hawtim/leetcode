@@ -3,6 +3,7 @@
 
 function circylarLinkedList() {
   this.head = new Node('head')
+  // 关键是初始这句
   this.head.next = this.head
   this.find = find
   this.insert = insert
@@ -20,10 +21,17 @@ function display() {
   }
 }
 
-// 插入节点
+// 插入节点，分情况插入新节点
 function insert(element, item) {
   var newNode = new Node(element)
   var currNode = this.find(item)
+  if (!(currNode.next.element == 'head')) {
+    newNode.next = currNode.next
+    currNode.next = newNode
+  } else {
+    newNode.next = this.head
+    currNode.next = newNode
+  }
   newNode.next = currNode.next
   currNode.next = newNode
 }
@@ -49,7 +57,7 @@ function find(item) {
 // 查找前一个节点
 function findPrev(item) {
   var currNode = this.head
-  while(currNode.next !== null && currNode.next.element !== item) {
+  while(currNode.next !== null && currNode.next.element !== 'head' && currNode.next.element !== item) {
     currNode = currNode.next
   }
   return currNode
