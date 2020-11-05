@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <button id="w3c"></button>
+  <ul id="delegate">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul> -->
+  <button id="multiButton">multi</button>
+  <script src="./onceEvent.js"></script>
+  <script>
+    // var buttonEl = document.getElementById('w3c');
+    // once1('click', buttonEl, function (e) {
+    //   console.log('W3C标准事件1');
+    // })
+    // once2('click', buttonEl, function (e) {
+    //   console.log('W3C标准事件2');
+    // })
+
+    // var delegate = document.getElementById('delegate')
+    // once1('click', delegate, function(e) {
+    //   console.log('事件委托')
+    // })
+    var multiButton = document.getElementById('multiButton')
+    multi('click', multiButton, function(e, times) {
+      console.log(times)
+    }, 10)
+  </script>
+</body>
+</html>

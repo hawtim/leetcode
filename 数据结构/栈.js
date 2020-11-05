@@ -103,5 +103,4 @@ console.log(factorial(5))
 // pratice
 
 
-
 module.exports = Stack
