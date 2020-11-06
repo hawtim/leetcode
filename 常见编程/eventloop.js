@@ -2,17 +2,17 @@
 console.log('start')
 setTimeout(() => {
   console.log('timer1')
-  Promise.resolve().then(function() {
+  Promise.resolve().then(function () {
     console.log('promise1')
   })
 }, 0)
 setTimeout(() => {
   console.log('timer2')
-  Promise.resolve().then(function() {
+  Promise.resolve().then(function () {
     console.log('promise2')
   })
 }, 0)
-Promise.resolve().then(function() {
+Promise.resolve().then(function () {
   console.log('promise3')
 })
 console.log('end')
@@ -34,7 +34,3 @@ console.log('end')
 // promise1, promise2  // microtask
 // ...                 // -> io callbacks 阶段
 // ...                 // -> idle, prepare 阶段
-
-
-
-

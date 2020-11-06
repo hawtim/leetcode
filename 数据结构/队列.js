@@ -2,4 +2,3 @@
 // 特点。先进先出 first in first out
 
 // 数组的 push 在数组末尾加入元素，shift 方法删除数组第一个元素
-

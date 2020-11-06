@@ -8,7 +8,7 @@ function quickSort(arr) {
   var lesser = []
   var greater = []
   var pivot = list[0]
-  for (var i = 0; i < list.length; i ++) {
+  for (var i = 0; i < list.length; i++) {
     if (list[i] < pivot) {
       lesser.push(list[i])
     } else {

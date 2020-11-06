@@ -1,6 +1,5 @@
 // 和 call 和 apply 不同的是，返回一个绑定上下文的函数
 
-
 Function.prototype.myBind = function (context, ...args1) {
   if (this === Function.prototype) {
     throw new TypeError('Error')
@@ -19,15 +18,14 @@ Function.prototype.myBind = function (context, ...args1) {
   }
 }
 
-
 // 比如
 var obj1 = {
   a: 1,
   fun1: function (name, age) {
-    this.habit = 'coding';
-    console.log(this.a);
-    console.log(name);
-    console.log(age);
+    this.habit = 'coding'
+    console.log(this.a)
+    console.log(name)
+    console.log(age)
   }
 }
 
@@ -47,14 +45,11 @@ var obj3 = new fun3()
 console.log(obj3.__proto__)
 // return obj1.fun1.apply(obj2, args1.concat(args2))
 
-
-
 // // var fun2 = obj1.fun1.bind(obj2)
 // // fun2()
 // // 实现 mybind 函数具有原生 bind 的功能
 // var fun2 = obj1.fun1.myBind()
 // fun2()
-
 
 // let value = 2;
 // let foo = {
@@ -79,6 +74,3 @@ console.log(obj3.__proto__)
 
 // obj.friend;
 // xiaohei
-
-
-

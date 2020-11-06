@@ -35,8 +35,6 @@ Function.prototype.myCall = function (context = globalThis, ...args) {
   return result
 }
 
-
-
 // myCall test
 var obj = {
   a: 1

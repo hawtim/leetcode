@@ -6,23 +6,23 @@ function extend(subClass, superClass) {
   subClass.prototype = prototype // 指定对象
 }
 
-function Father(name){
+function Father(name) {
   console.log('调用了 father')
   this.name = name
-  this.colors = ["red","blue","green"]
+  this.colors = ['red', 'blue', 'green']
 }
 
-Father.prototype.sayName = function(){
+Father.prototype.sayName = function () {
   alert(this.name)
 }
 
-function Son(name, age){
-  Father.call(this,name) //继承实例属性，第一次调用Father()
+function Son(name, age) {
+  Father.call(this, name) //继承实例属性，第一次调用Father()
   this.age = age
 }
 
 extend(Son, Father) // 继承父类方法,此处并不会第二次调用Father()
 
-Son.prototype.sayAge = function(){
+Son.prototype.sayAge = function () {
   alert(this.age)
 }

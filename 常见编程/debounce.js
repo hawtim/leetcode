@@ -41,12 +41,9 @@ function debounce(fn, wait, immediate) {
   }
 }
 
-
-
 function test(...args) {
   console.log(args)
 }
-
 
 const debounceTest = debounce(test, 20, true)
 

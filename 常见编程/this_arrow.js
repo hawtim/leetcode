@@ -2,22 +2,22 @@
 // 箭头函数在定义时默认绑定外层的 this，即 babel 后的结果
 class A {
   constructor(a, b, c) {
-    this.a = a;
-    this.b = b;
-    this.c = c;
+    this.a = a
+    this.b = b
+    this.c = c
     return () => {
-      console.log(this);
-    };
+      console.log(this)
+    }
   }
   output() {
-    console.log(this.a, this.b, this.c);
+    console.log(this.a, this.b, this.c)
     return () => {
       console.log(this)
     }
   }
 }
 
-var a = new A(1, 2, 3);
+var a = new A(1, 2, 3)
 var output = a.output()
 output()
 
@@ -25,8 +25,8 @@ output()
 var A = (function () {
   function A(a, b, c) {
     var _this = this
-    this.a = a 
-    this.b = b 
+    this.a = a
+    this.b = b
     this.c = c
     return function () {
       console.log(_this)
@@ -43,7 +43,6 @@ var A = (function () {
 })()
 // 结果就很清晰了
 console.log(A, A.prototype)
-
 
 // =========== babel ============ //
 // "use strict";

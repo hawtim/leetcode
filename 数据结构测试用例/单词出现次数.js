@@ -16,7 +16,7 @@ Commodo ut voluptate ea velit. Culpa ipsum aliqua enim laboris officia amet sit 
 
 var words = str.replace(/\./gim, '').split(' ')
 
-for (var i = 0; i < words.length; ++ i) {
+for (var i = 0; i < words.length; ++i) {
   var w = words[i]
   var word = wordsBst.find(w)
   if (word == null) {

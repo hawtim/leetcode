@@ -35,7 +35,7 @@ function remove(item) {
 // 找到想要的节点
 function find(item) {
   var current = this.head
-  while(current.element != item) {
+  while (current.element != item) {
     current = current.next
   }
   return current
@@ -55,13 +55,12 @@ function display() {
     console.log('display', currNode.next.element)
     currNode = currNode.next
   }
-
 }
 
 function displayReverse() {
   var currNode = this.head
   currNode = this.findLast()
-  while(!(currNode.previous == null)) {
+  while (!(currNode.previous == null)) {
     console.log('displayReverse', currNode.element)
     currNode = currNode.previous
   }
@@ -76,7 +75,6 @@ cities.display()
 cities.remove('hawtim')
 cities.display()
 cities.displayReverse()
-
 
 // commonjs export
 module.exports = doubleLinkedList

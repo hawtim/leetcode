@@ -36,7 +36,7 @@ function BST() {
   this.getMin = getMin
   this.getMinNode = getMinNode
   this.getMaxNode = getMaxNode
-  this.getMax= getMax
+  this.getMax = getMax
   this.find = find
   this.remove = remove
   this.removeNode = removeNode
@@ -176,7 +176,7 @@ function getMinNode(node) {
 // 最大的节点在右子树
 function getMax() {
   var current = this.root
-  while(!(current.right == null)) {
+  while (!(current.right == null)) {
     current = current.right
   }
   return current.data
@@ -198,7 +198,7 @@ function min() {
 
 function max() {
   var current = this.root
-  while(!(current.right == null)) {
+  while (!(current.right == null)) {
     current = current.right
   }
   return current.show()

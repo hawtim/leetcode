@@ -54,7 +54,7 @@ function mulBase(num, base) {
     s.push(num % base)
     console.log(s)
     // 使用n/b代替n
-    num = Math.floor(num /= base)
+    num = Math.floor((num /= base))
     // 重复步骤1和2，直到n等于0，且没有余数。
   } while (num > 0)
   var converted = ''
@@ -99,8 +99,6 @@ function factorial(n) {
 }
 console.log(factorial(5))
 
-
 // pratice
-
 
 module.exports = Stack

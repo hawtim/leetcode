@@ -70,7 +70,7 @@ class Stack {
     }
     let objString = `${this.items[0]}`
     for (let i = 1; i < this.count; i++) {
-      objString= `${objString}, ${this.items[i]}`
+      objString = `${objString}, ${this.items[i]}`
     }
     return objString
   }

@@ -4,7 +4,7 @@ function Super() {
   this.flag = true
 }
 
-Super.prototype.getFlag = function() {
+Super.prototype.getFlag = function () {
   return this.flag
 }
 
@@ -13,7 +13,7 @@ function Sub() {
 }
 
 Sub.prototype = new Super()
-Sub.prototype.getSubFlag = function() {
+Sub.prototype.getSubFlag = function () {
   return this.subFlag
 }
 

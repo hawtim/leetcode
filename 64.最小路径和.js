@@ -26,11 +26,12 @@
  * @return {number}
  */
 
- var minPathSum = function (grid) {
-  let l = grid.length, h = grid[0].length;
-  let dp = [];
+var minPathSum = function (grid) {
+  let l = grid.length,
+    h = grid[0].length
+  let dp = []
   for (let i = 0; i < l; i++) {
-    dp[i] = [];
+    dp[i] = []
   }
   // console.log(dp)
   for (let i = 0; i < l; i++) {
@@ -50,7 +51,7 @@
   }
   // console.log(dp)
   return dp[l - 1][h - 1]
-};
+}
 // @lc code=end
 
 // minPathSum([[0, 4], [3, 5]])

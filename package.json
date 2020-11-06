@@ -1,0 +1,17 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "scripts": {
+    "prettier": "npx prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hawtim/leetcode.git"
+  },
+  "author": "hawtim<hawtimzhang@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hawtim/leetcode/issues"
+  },
+  "homepage": "https://github.com/hawtim/leetcode#readme"
+}

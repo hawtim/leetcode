@@ -11,15 +11,15 @@ function myNew(ctor, ...args) {
 }
 
 function Person(firtName, lastName) {
-  this.firtName = firtName;
-  this.lastName = lastName;
+  this.firtName = firtName
+  this.lastName = lastName
 }
 
 Person.prototype.getFullName = function () {
-  return `${this.firtName} ${this.lastName}`;
-};
+  return `${this.firtName} ${this.lastName}`
+}
 
-const person = new Person('zhang', 'haotian');
+const person = new Person('zhang', 'haotian')
 
 const person1 = myNew(Person, 'zhang', 'haotian')
 

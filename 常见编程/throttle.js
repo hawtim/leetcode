@@ -16,11 +16,10 @@ function test(...args) {
   console.log(args)
 }
 
-
 const throttleTest = throttle(test, 20, false)
 for (let i = 0; i < 20; i++) {
   // setTimeout(() => {
-    throttleTest(i)
-    test(i)
+  throttleTest(i)
+  test(i)
   // }, 20)
 }

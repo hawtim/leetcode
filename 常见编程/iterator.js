@@ -4,7 +4,7 @@ var myObject = {
   a: 2,
   b: 3,
   c: 4
-};
+}
 
 Object.defineProperty(myObject, Symbol.iterator, {
   enumerable: false,
@@ -15,7 +15,7 @@ Object.defineProperty(myObject, Symbol.iterator, {
     var idx = 0
     var ks = Object.keys(o)
     return {
-      next: function() {
+      next: function () {
         return {
           value: o[ks[idx++]],
           done: idx > ks.length

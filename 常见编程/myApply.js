@@ -15,7 +15,6 @@ Function.prototype.myApply = function (context = globalThis, args) {
   return result
 }
 
-
 // myApply test
 
 var obj2 = {

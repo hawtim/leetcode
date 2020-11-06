@@ -1,6 +1,6 @@
 function genArray(length) {
   var arr = []
-  for (var i = 0; i < length; i ++) {
+  for (var i = 0; i < length; i++) {
     arr[i] = Math.floor(Math.random() * 101)
   }
   return arr
@@ -12,7 +12,7 @@ var grades = genArray(100)
 
 var gradeBst = new BST()
 
-for (var i = 0; i < grades.length; ++ i) {
+for (var i = 0; i < grades.length; ++i) {
   var g = grades[i]
   var grade = gradeBst.find(g)
   if (grade == null) {

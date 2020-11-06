@@ -1,4 +1,4 @@
-import { Compare, defaultCompare } from '../util'
+import {Compare, defaultCompare} from '../util'
 
 export class Node {
   constructor(key) {
@@ -38,31 +38,24 @@ export default class BinarySearchTree {
   }
   search(key) {
     // 在树中查找一个键。如果节点存在，则返回true；如果不存在，则返回false。
-    
   }
   inOrderTraverse() {
     // 通过中序遍历方式遍历所有节点。
-
   }
   preOrderTraverse() {
     // 通过先序遍历方式遍历所有节点。
-
   }
   postOrderTraverse() {
     // 通过后序遍历方式遍历所有节点。
-
   }
   min() {
     // 返回树中最小的值/键。
-
   }
   max() {
     // 返回树中最大的值/键。
-
   }
   remove(key) {
     // 从树中移除某个键。
-
   }
 }
 

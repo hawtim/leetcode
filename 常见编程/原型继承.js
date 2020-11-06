@@ -5,7 +5,7 @@ function Father() {
   this.fatherName = 'father'
 }
 
-Father.prototype.getFatherName = function() {
+Father.prototype.getFatherName = function () {
   console.log(this.fatherName)
 }
 function Child() {
@@ -14,7 +14,7 @@ function Child() {
 
 Child.prototype = new Father()
 Child.prototype.constructor = Child
-Child.prototype.getChildName = function() {
+Child.prototype.getChildName = function () {
   console.log(this.childName)
 }
 

@@ -57,7 +57,11 @@ function find(item) {
 // 查找前一个节点
 function findPrev(item) {
   var currNode = this.head
-  while(currNode.next !== null && currNode.next.element !== 'head' && currNode.next.element !== item) {
+  while (
+    currNode.next !== null &&
+    currNode.next.element !== 'head' &&
+    currNode.next.element !== item
+  ) {
     currNode = currNode.next
   }
   return currNode

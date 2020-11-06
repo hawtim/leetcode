@@ -1,96 +1,96 @@
 // 可递归的数据类型
-const mapTag = '[object Map]';
-const setTag = '[object Set]';
-const arrayTag = '[object Array]';
-const objectTag = '[object Object]';
-const argsTag = '[object Arguments]';
-const weakMapTag = "[object WeakMap]"
+const mapTag = '[object Map]'
+const setTag = '[object Set]'
+const arrayTag = '[object Array]'
+const objectTag = '[object Object]'
+const argsTag = '[object Arguments]'
+const weakMapTag = '[object WeakMap]'
 
 // 不可递归的数据类型
-const boolTag = '[object Boolean]';
-const dateTag = '[object Date]';
-const numberTag = '[object Number]';
-const stringTag = '[object String]';
-const symbolTag = '[object Symbol]';
-const errorTag = '[object Error]';
-const regexpTag = '[object RegExp]';
-const funcTag = '[object Function]';
+const boolTag = '[object Boolean]'
+const dateTag = '[object Date]'
+const numberTag = '[object Number]'
+const stringTag = '[object String]'
+const symbolTag = '[object Symbol]'
+const errorTag = '[object Error]'
+const regexpTag = '[object RegExp]'
+const funcTag = '[object Function]'
 
-const deepTag = [mapTag, setTag, arrayTag, objectTag, argsTag];
+const deepTag = [mapTag, setTag, arrayTag, objectTag, argsTag]
 
 function forEach(array, iteratee) {
-  let index = -1;
-  const length = array.length;
+  let index = -1
+  const length = array.length
   while (++index < length) {
-    iteratee(array[index], index);
+    iteratee(array[index], index)
   }
-  return array;
+  return array
 }
 
 function isObject(target) {
-  const type = typeof target;
-  return target !== null && (type === 'object' || type === 'function');
+  const type = typeof target
+  return target !== null && (type === 'object' || type === 'function')
 }
 
 function getType(target) {
-  return Object.prototype.toString.call(target);
+  return Object.prototype.toString.call(target)
 }
 
 function getCtor(target) {
-  const Ctor = target.constructor;
-  return new Ctor();
+  const Ctor = target.constructor
+  return new Ctor()
 }
 // Symbol
 function cloneSymbol(target) {
-  return Object(Symbol.prototype.valueOf.call(target));
+  return Object(Symbol.prototype.valueOf.call(target))
 }
 // 正则表达式
 function cloneReg(target) {
-  const reFlags = /\w*$/;
-  const result = new target.constructor(target.source, reFlags.exec(target));
-  result.lastIndex = target.lastIndex;
-  return result;
+  const reFlags = /\w*$/
+  const result = new target.constructor(target.source, reFlags.exec(target))
+  result.lastIndex = target.lastIndex
+  return result
 }
 
 function cloneFunction(func) {
-  const bodyReg = /(?<={)(.|\n)+(?=})/m;
-  const paramReg = /(?<=\().+(?=\)\s+{)/;
-  const funcString = func.toString();
+  const bodyReg = /(?<={)(.|\n)+(?=})/m
+  const paramReg = /(?<=\().+(?=\)\s+{)/
+  const funcString = func.toString()
   if (func.prototype) {
-    const param = paramReg.exec(funcString);
-    const body = bodyReg.exec(funcString);
+    const param = paramReg.exec(funcString)
+    const body = bodyReg.exec(funcString)
     if (body) {
       if (param) {
-        const paramArr = param[0].split(',');
-        return new Function(...paramArr, body[0]);
+        const paramArr = param[0].split(',')
+        return new Function(...paramArr, body[0])
       } else {
-        return new Function(body[0]);
+        return new Function(body[0])
       }
     } else {
-      return null;
+      return null
     }
   } else {
-    return eval(funcString);
+    return eval(funcString)
   }
 }
 
 function cloneOtherType(target, type) {
-  const Ctor = target.constructor;
+  const Ctor = target.constructor
   switch (type) {
     case boolTag:
     case numberTag:
     case stringTag:
     case errorTag:
     case dateTag:
-      return new Ctor(target);
+      return new Ctor(target)
     case regexpTag:
-      return cloneReg(target);
+      return cloneReg(target)
     case symbolTag:
-      return cloneSymbol(target);
+      return cloneSymbol(target)
     case funcTag:
-      return cloneFunction(target);
+      return cloneFunction(target)
     default:
-      return null;
+      return null
   }
 }
 
@@ -104,12 +104,12 @@ function deepClone(target, map = new WeakMap()) {
 
   const type = getType(target)
   // 判断类型
-  let cloneTarget;
+  let cloneTarget
   if (deepTag.includes(type)) {
     // 保留原型链及原型链上的方法
     cloneTarget = getCtor(target, type)
   } else {
-    return cloneOtherType(target, type);
+    return cloneOtherType(target, type)
   }
 
   if (map.get(target)) {
@@ -118,7 +118,7 @@ function deepClone(target, map = new WeakMap()) {
   map.set(target, cloneTarget)
   // 克隆 set
   if (type === setTag) {
-    target.forEach(value => {
+    target.forEach((value) => {
       cloneTarget.add(deepClone(value, map))
     })
     return cloneTarget
@@ -129,16 +129,15 @@ function deepClone(target, map = new WeakMap()) {
       cloneTarget.set(key, deepClone(value, map))
     })
   }
-  const keys = type === arrayTag ? undefined : Object.keys(target);
+  const keys = type === arrayTag ? undefined : Object.keys(target)
   forEach(keys || target, (value, key) => {
     if (keys) {
-      key = value;
+      key = value
     }
-    cloneTarget[key] = deepClone(target[key], map);
-  });
+    cloneTarget[key] = deepClone(target[key], map)
+  })
   return cloneTarget
 }
-
 
 // 比如
 

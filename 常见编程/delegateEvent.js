@@ -10,11 +10,11 @@ function delegateEvent(parentSelector, targetSelector, events, fn) {
   // 事件绑定兼容性处理
   function addEvent(el, type, handle) {
     if (el.addEventListener) {
-      el.addEventListener(type, handle, false);
+      el.addEventListener(type, handle, false)
     } else if (el.attachEvent) {
-      el.attachEvent('on' + type, handle);
+      el.attachEvent('on' + type, handle)
     } else {
-      el['on' + type] = handle;
+      el['on' + type] = handle
     }
   }
   // 如果元素被指定的选择器字符串选择，Element.matches()  方法返回 true; 否则返回 false。
@@ -28,36 +28,34 @@ function delegateEvent(parentSelector, targetSelector, events, fn) {
       Element.prototype.webkitMatchesSelector ||
       function (s) {
         var matches = (this.document || this.ownerDocument).querySelectorAll(s),
-          i = matches.length;
+          i = matches.length
         while (--i >= 0 && matches.item(i) !== this) {}
-        return i > -1;
-      };
+        return i > -1
+      }
   }
 
   // 事件处理逻辑
   addEvent(parentSelector, events, function (e) {
-
     // 兼容性处理
-    var e = e || window.event;
-    var t = e.target || e.srcElement;
+    var e = e || window.event
+    var t = e.target || e.srcElement
 
     // currentTarget === parentSelector
-    var currentTarget = e.currentTarget;
+    var currentTarget = e.currentTarget
 
     // 遍历并判断是否为目标元素，如果不是，则往元素的 parentNode 继续查找
     while (!t.matches(targetSelector)) {
       // 如果是目标元素则跳出循环
       if (t === currentTarget) {
-        t = null;
-        break;
+        t = null
+        break
       }
-      t = t.parentNode;
+      t = t.parentNode
     }
 
     if (t) {
       // 将回调函数的 this 指向目标元素
-      fn.call(t, Array.prototype.slice.call(arguments));
+      fn.call(t, Array.prototype.slice.call(arguments))
     }
-  });
-
+  })
 }

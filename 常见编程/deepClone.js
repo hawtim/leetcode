@@ -22,7 +22,7 @@ function deepClone(obj) {
 }
 
 var obj = {
-  test: function() {}
+  test: function () {}
 }
 
 deepClone(obj)

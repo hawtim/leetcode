@@ -18,14 +18,13 @@
 // 3. 找出初始值
 // 显然，当 dp[i] [j] 中，如果 i 或者 j 有一个为 0，关系式是不成立的。
 
-
 // @lc code=start
 /**
  * @param {number} m
  * @param {number} n
  * @return {number}
  */
-var uniquePaths = function(m, n) {
+var uniquePaths = function (m, n) {
   if (m <= 0 || n <= 0) return 0
   // 先创建以 m 为长度的数组，目标创造一个矩阵
   // tips 在中国大陆，横向的元素组称为“行”，纵向称为“列”，而在台湾则相反，横向称为“列”，纵向称为“行”
@@ -50,6 +49,5 @@ var uniquePaths = function(m, n) {
   }
   // console.log(dp)
   return dp[n - 1][m - 1]
-};
+}
 // @lc code=end
-
