@@ -14,7 +14,7 @@
 // 0 <= s 的长度 <= 50000
 
 // 利用 indexOf 和 lastIndexOf 这两个 api
-
+// 时间复杂度两次 indexOf 为 O(n)，空间复杂度为 0
 /**
  * @param {string} s
  * @return {character}
@@ -26,4 +26,29 @@ var firstUniqChar = function(s) {
     }
   }
   return ' ';
+};
+
+// 利用 map，时间复杂度 O(n) 空间复杂度 O(n)
+
+/**
+ * @param {string} s
+ * @return {character}
+ */
+var firstUniqChar = function(s) {
+  if (!s) return ' '
+  var map = {}
+  var arr = s.split('')
+  var len = s.length
+  for (var i = 0; i < len; i++) {
+    var current = arr[i]
+    var count = map[current]
+    map[current] = count ? count + 1 : 1
+  }
+  for (var j = 0; j < len; j++) {
+    var current = arr[j]
+    if (map[current] == 1) {
+      return current
+    }
+  }
+  return ' '
 };
