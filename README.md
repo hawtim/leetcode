@@ -1,20 +1,6 @@
-# 算法学习之 javascript
+"如果你不懂数据结构和算法，那么你的写的代码和 hello world 有什么区别？" —— 鲁迅
 
-## Easy
+被上面👆的话扎到心了。
 
-1. 两数之和
-2. 回文数
-
-## Medium
-
-8. 字符串转换整数 (atoi)
-
-## 数据结构
-
-知识来源于 javascript 数据结构与算法描述
-
-1. 栈
-2. 队列
-3. 链表
-
-leetcode.cn 配合 vscode leetcode 插件进行学习
+Powered by vscode & leetcode plugin.
+Just do it.
