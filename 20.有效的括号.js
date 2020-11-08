@@ -56,9 +56,47 @@
  */
 
 // @lc code=start
+
 /**
  * @param {string} s
  * @return {boolean}
  */
-var isValid = function (s) {}
+var isValid = function (s) {
+  let stack = []
+  let len = s.length
+  // 分奇数偶数
+  if (len % 2) return false
+  for (let i = 0; i < len; i++) {
+    let letter = s[i]
+    switch (letter) {
+      // 左括号全部入栈
+      case '(': {
+        stack.push(letter)
+        break
+      }
+      case '[': {
+        stack.push(letter)
+        break
+      }
+      case '{': {
+        stack.push(letter)
+        break
+      }
+      // 匹配到右括号的时候出栈判断是否对称
+      case ')': {
+        if (stack.pop() !== '(') return false
+        break
+      }
+      case ']': {
+        if (stack.pop() !== '[') return false
+        break
+      }
+      case '}': {
+        if (stack.pop() !== '{') return false
+        break
+      }
+    }
+  }
+  return !stack.length // 0 => true
+}
 // @lc code=end

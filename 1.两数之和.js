@@ -64,14 +64,33 @@ var twoSum = function(nums, target) {
 // 不同于Object，Map会保留所有元素的顺序。
 // Map在存储大量数据的场景下表现更好，
 // 尤其是在key为未知状态，并且所有key和所有value分别为相同类型的情况下。
-
+// 这是返回下标的场景
 var twoSum = function(nums, target) {
   const map = new Map()
   const len = nums.length
   for (let i = 0; i < len; i++) {
+    // 如果目标值减去当前值已经在 map 中记录，
+    // 那么就获取缓存中的已存值，拿到缓存的下标和当前的下标
     if (map.has(target - nums[i])) {
       return [map.get(target - nums[i]), i]
     }
+    // map 设置当前值及下标索引
     map.set(nums[i], i)
   }
 };
+// 这是返回具体数字的场景
+var twoSum = function (nums, target) {
+  let map = {}
+  for (let i = 0; i < nums.length; i++) {
+    if (map[target - nums[i]] !== undefined) {
+      return [map[target - nums[i]], nums[i]]
+    } else {
+      map[nums[i]] = nums[i]
+    }
+  }
+}
+
+// 可以用两重循环解决问题，
+// 相当于虽然我在缓存里了，但是每次还是要查一遍缓存
+// 上面的最终解决方案是
+
