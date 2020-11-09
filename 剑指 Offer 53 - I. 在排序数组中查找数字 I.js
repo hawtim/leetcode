@@ -14,6 +14,7 @@
 
 // 0 <= 数组长度 <= 50000
 
+// 时间复杂度应该是和二分查找差不多的。O(logN)
 /**
  * @param {number[]} nums
  * @param {number} target
@@ -28,22 +29,4 @@ var search = function (nums, target) {
     cpy++
   }
   return cpy - init
-}
-
-var binarySearch = function (nums, target) {
-  var start = 0
-  var end = nums.length
-  var mid
-  while (start < end) {
-    mid = Math.floor((start + end) / 2)
-    if (nums[mid] === target) {
-      return mid
-    }
-    if (nums[mid] > target) {
-      end = mid - 1
-    } else {
-      start = mid + 1
-    }
-  }
-  return -1
 }

@@ -64,6 +64,7 @@ class Stack {
   size() {
     return this.count
   }
+  // 复杂度 O(N)
   toString() {
     if (this.isEmpty()) {
       return ''

@@ -10,13 +10,13 @@ function myNew(ctor, ...args) {
   return typeof result === 'object' ? result : newObj
 }
 
-function Person(firtName, lastName) {
-  this.firtName = firtName
+function Person(firstName, lastName) {
+  this.firstName = firstName
   this.lastName = lastName
 }
 
 Person.prototype.getFullName = function () {
-  return `${this.firtName} ${this.lastName}`
+  return `${this.firstName} ${this.lastName}`
 }
 
 const person = new Person('zhang', 'haotian')
