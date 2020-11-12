@@ -60,7 +60,6 @@
  * @param {number} target
  * @return {number}
  */
-
 // 时间复杂度：O(logn)，二分的思想
 // 空间复杂度：O(1) 仅使用常数级别的变量
 var search = function(nums, target) {
@@ -78,7 +77,7 @@ var search = function(nums, target) {
         // target 在 [start, mid] 之间
         end = mid - 1;
       } else {
-        //target 不在 [start, mid] 之间
+        // target 不在 [start, mid] 之间，即中点的右侧
         start = mid + 1;
       }
     } else {
@@ -87,7 +86,7 @@ var search = function(nums, target) {
         // target 在 [mid, end] 之间
         start = mid + 1;
       } else {
-        // target 不在 [mid, end] 之间
+        // target 不在 [mid, end] 之间，即中点的左侧
         end = mid - 1;
       }
     }

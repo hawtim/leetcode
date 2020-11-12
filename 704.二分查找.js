@@ -51,6 +51,8 @@
  * @param {number} target
  * @return {number}
  */
+
+//  循环版
 var search = function(nums, target) {
   var start = 0
   var end = nums.length - 1 // 减去 1 会更加好理解
@@ -68,5 +70,54 @@ var search = function(nums, target) {
   }
   return -1
 };
+
+// 递归版
+var searchRecursive = function (nums, target, start, end) {
+  if (start > end) return -1
+  var mid = Math.floor((start + end) / 2)
+  if (nums[mid] === target) {
+    return mid
+  } else if (nums[mid] < target) {
+    return searchRecursive(nums, target, mid + 1, end)
+  } else {
+    return searchRecursive(nums, target, start, mid - 1)
+  }
+}
+
+
+// 递归版找第一个位置
+var searchFirstRecursive = function (nums, target, start, end) {
+  if (start > end) return -1
+  var mid = Math.floor((start + end) / 2)
+  if (nums[mid] === target) {
+    if (nums[mid - 1] !== target) {
+      return mid
+    } else {
+      return searchFirstRecursive(nums, target, start, mid - 1)
+    }
+  } else if (nums[mid] < target) {
+    return searchFirstRecursive(nums, target, mid + 1, end)
+  } else {
+    return searchFirstRecursive(nums, target, start, mid - 1)
+  }
+}
+
+// 递归版找最后一个位置
+var searchLastRecursive = function (nums, target, start, end) {
+  if (start > end) return -1
+  var mid = Math.floor((start + end) / 2)
+  if (nums[mid] === target) {
+    if (nums[mid + 1] !== target) {
+      return mid
+    } else {
+      return searchLastRecursive(nums, target, mid + 1, end)
+    }
+  } else if (nums[mid] < target) {
+    return searchLastRecursive(nums, target, mid + 1, end)
+  } else {
+    return searchLastRecursive(nums, target, start, mid - 1)
+  }
+}
+
 // @lc code=end
 
