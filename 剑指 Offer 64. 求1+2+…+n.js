@@ -23,6 +23,7 @@
 
 // 使用递归内存消耗会大，时间开销上相差不大
 var sumNums = function(n) {
-  // return n && (n + sumNums(n - 1))
   return (Math.pow(n, 2) + n) >> 1
+  // 等同于
+  // return (Math.pow(n, 2) + n) / 2
 };

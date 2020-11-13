@@ -87,20 +87,65 @@ var myAtoi = function (str) {
   if (char == '-' && str != '-') {
     temp = getMaxLengthNum(str.slice(1))
     if (!temp) return '0'
-    if (temp[0] > INT_MAX) return '-2147483648'
+    if (temp[0] > INT_MAX) return - INT_MAX
     return '-' + temp[0]
   }
   if (char == '+' && str != '+') {
     temp = getMaxLengthNum(str.slice(1))
     if (!temp) return '0'
-    if (temp[0] > INT_MAX - 1) return '2147483647'
+    if (temp[0] > INT_MAX - 1) return INT_MAX - 1
     return temp[0]
   }
   if (char.match(/(^[0-9]+)/)) {
     temp = getMaxLengthNum(str)
-    if (temp[0] > INT_MAX - 1) return '2147483647'
+    if (temp[0] > INT_MAX - 1) return INT_MAX - 1
     return temp[0]
   }
   return '0'
 }
 // @lc code=end
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var myAtoi = function(s) {
+  var result = 0
+  if (!s) return result
+  var str = s.trim()
+  // 1. 保存正负位
+  var hasSymbol = ''
+  // 2. 判断第一位符号
+  if (['+', '-'].includes(str[0])) {
+    hasSymbol = str.slice(0, 1)
+    str = str.slice(1)
+  }
+  // 3. 第二位如果还不是数字，就等于无法转换
+  if (0 <= str[0] && str[0] <= 9) {
+    // 3.1 匹配数字
+    var regexp = /(^[0-9]+)/gim
+    const numStr = regexp.exec(str)
+    if (!numStr) return result
+    // 3.2 获取匹配到的数字，转换为数字
+    str = numStr[0]
+    for (var i = 0; i < str.length; i++) {
+      result += str[i] * Math.pow(10, str.length - 1 - i)
+    }
+    // 3.3 算上符号
+    if (hasSymbol) {
+      result = hasSymbol === '-' ? -1 * result : result
+    }
+    // 3.4 如果是超大数字
+    var INT_MAX = Math.pow(2, 31) - 1
+    var INT_MIN = Math.pow(-2, 31)
+    if (result > INT_MAX) {
+      return INT_MAX
+    }
+    if (result < INT_MIN) {
+      return INT_MIN
+    }
+  }
+  // 4. 返回
+  return result
+};
+
