@@ -57,3 +57,8 @@ var climbStairs = function(n) {
 };
 // @lc code=end
 
+// 每一节楼梯都可以选择跳或者不跳，但最后一个楼梯一定要跳，所以是 2^(n-1)
+// 变态青蛙跳
+var insameJump = function (n) {
+  return Math.pow(2, n - 1)
+}
