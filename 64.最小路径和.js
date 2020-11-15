@@ -26,32 +26,49 @@
  * @return {number}
  */
 
-var minPathSum = function (grid) {
-  let l = grid.length,
-    h = grid[0].length
-  let dp = []
-  for (let i = 0; i < l; i++) {
-    dp[i] = []
-  }
-  // console.log(dp)
-  for (let i = 0; i < l; i++) {
-    for (let j = 0; j < h; j++) {
-      if (i == 0 && j == 0) {
-        dp[i][j] = grid[i][j]
-      } else if (i == 0) {
-        // i == 0 只能是向下走
-        dp[i][j] = dp[i][j - 1] + grid[i][j]
-      } else if (j == 0) {
-        // j == 0 只能是向右走
-        dp[i][j] = dp[i - 1][j] + grid[i][j]
-      } else {
-        dp[i][j] = grid[i][j] + Math.min(dp[i][j - 1], dp[i - 1][j])
-      }
+// 1. 不需要额外空间的
+var minPathSum = function(grid) {
+  var row = grid.length
+  var column = grid[0].length
+  // 不需要额外空间，直接修改 grid 
+  // 时间复杂度为 O(m x n)
+  for (var r = 0; r < row; r++) {
+    for (var c = 0; c < column; c++) {
+      if(r == 0 && c == 0) continue;
+      else if(r == 0)  grid[r][c] = grid[r][c - 1] + grid[r][c];
+      else if(c == 0)  grid[r][c] = grid[r - 1][c] + grid[r][c];
+      else grid[r][c] = Math.min(grid[r - 1][c], grid[r][c - 1]) + grid[r][c];
     }
   }
-  // console.log(dp)
-  return dp[l - 1][h - 1]
-}
+  return grid[row - 1][column - 1]
+};
+
+// 2. 使用二维数组不要修改 grid 的
+// 额外的空间，grid 的空间。
+// 时间复杂度还是一样 O(m x n)
+// var minPathSum = function (grid) {
+//   let row = grid.length, column = grid[0].length
+//   let dp = []
+//   for (let r = 0; r < row; r++) {
+//     dp[r] = []
+//   }
+//   for (let r = 0; r < row; r++) {
+//     for (let c = 0; c < column; c++) {
+//       if (r == 0 && c == 0) {
+//         dp[r][c] = grid[r][c]
+//       } else if (r == 0) {
+//         // i == 0 只能是向下走
+//         dp[r][c] = dp[r][c - 1] + grid[r][c]
+//       } else if (c == 0) {
+//         // j == 0 只能是向右走
+//         dp[r][c] = dp[r - 1][c] + grid[r][c]
+//       } else {
+//         dp[r][c] = grid[r][c] + Math.min(dp[r][c - 1], dp[r - 1][c])
+//       }
+//     }
+//   }
+//   return dp[row - 1][column - 1]
+// }
 // @lc code=end
 
 // minPathSum([[0, 4], [3, 5]])
