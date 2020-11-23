@@ -41,5 +41,5 @@
  * @return {number[]}
  */
 var decrypt = function(code, k) {
-
+  
 };

@@ -16,7 +16,8 @@ const REJECTED = 'rejected'
 // 一个promise可绑定多个then方法
 // then方法可以同步调用也可以异步调用
 // 同步调用：状态已经改变，直接调用onFulfilled方法
-// 异步调用：状态还是 PENDING，将 onFulfilled、onRejected 分别加入两个函数数组 onFulfilledCallbacks 、 onRejectedCallbacks ，
+// 异步调用：状态还是 PENDING，将 onFulfilled、onRejected 
+// 分别加入两个函数数组 onFulfilledCallbacks 、 onRejectedCallbacks ，
 // 当异步调用 resolve 和 reject 时，将两个数组中绑定的事件循环执行。
 
 function MyPromise(executor) {
@@ -106,7 +107,7 @@ MyPromise.prototype.then = function (onFulfilled, onRejected) {
   })
   return promise2
 }
-// 捕获错误，若上面没有定义 reject 方法，所有的异常会走向catch方法
+// 捕获错误，若上面没有定义 reject 方法，所有的异常会走向 catch 方法
 MyPromise.prototype.catch = function (onRejected) {
   // 没有 onResolve
   return this.then(null, onRejected)
@@ -195,11 +196,12 @@ console.log(2)
 // @test
 
 //@test
-new Promise((resolve, reject) => {
-  resolve(Promise.resolve('xxxxx')) // 直接 fulfilled 逻辑
+new MyPromise((resolve, reject) => {
+  resolve('xxxxx') // 直接 fulfilled 逻辑
 })
   .then((res1) => {
-    console.log(res1)
+    console.log('res1', res1)
+    return res1
   })
   .then((res2) => {
     console.log(res2)
@@ -207,12 +209,12 @@ new Promise((resolve, reject) => {
 
 //  pending 状态下，我们就需要把多个 then 的回调函数放到 onFulfilledCallbacks 或者 onRejectedCallbacks 中，
 // 等待 Promise 的 executor 对这两个数组进行事件循环并执行
-this.onFulfilledCallbacks = [
-  (res1) => {
-    console.log(res1)
-  },
-  (res2) => {
-    console.log(res2)
-  }
-]
+// this.onFulfilledCallbacks = [
+//   (res1) => {
+//     console.log(res1)
+//   },
+//   (res2) => {
+//     console.log(res2)
+//   }
+// ]
 //@test

@@ -1,0 +1,89 @@
+<!-- - A元素垂直居中于屏幕***；
+- A元素距离屏幕左右边距各10px；
+- A元素里面的文字”A”的font-size:20px；水平垂直居中; -->
+<!-- - A元素的高度始终是A元素宽度的50%; (如果搞不定可以实现为A元素的高度固定为200px -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <title>Document</title>
+  <style>
+    /* 第一种方案 使用 flex 布局 */
+    /* * {
+      padding: 0;
+      margin: 0;
+      box-sizing: content-box;
+    }
+    .container {
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+    }
+    .A {
+      font-size: 20px;
+      margin: 0 10px;
+      height: 50%;
+      width: 100%;
+      background-color: lightblue;
+      color: white;
+    } */
+    /* 第二种方案，绝对定位 + css3 + calc or 负边距 */
+    /* * {
+      padding: 0;
+      margin: 0;
+      box-sizing: content-box;
+    }
+    .container {
+      position: relative;
+      margin: 0 auto;
+      text-align: center;
+      height: 100vh;
+
+    }
+    .A {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(100% - 20px);
+      height: 50%;
+      font-size: 20px;
+      color: white;
+      background-color: lightblue;
+    } */
+    /* 第三种方案，table-cell + inline-block */
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: content-box;
+    }
+    .container {
+      display: table-cell;
+      margin: 0 auto;
+      text-align: center;
+      width: 100vw;
+      height: 100vh;
+      vertical-align: middle;
+    }
+    .A {
+      display: inline-block;
+      width: calc(100% - 20px);
+      height: 50%;
+      font-size: 20px;
+      color: white;
+      background-color: lightblue;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="A">
+      A module
+    </div>
+  </div>
+</body>
+</html>

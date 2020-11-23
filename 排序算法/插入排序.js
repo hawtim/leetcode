@@ -1,2 +1,4 @@
 // 插入 > 选择 > 冒泡
-function insertionSort() {}
+function insertionSort() {
+  console.log('insert')
+}

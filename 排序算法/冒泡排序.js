@@ -8,6 +8,7 @@ function bubbleSort() {
         swap(this.dataStore, inner, inner + 1)
       }
     }
-    console.log(this.toString())
   }
 }
+
+// 两重循环不断交换两者间的位置
