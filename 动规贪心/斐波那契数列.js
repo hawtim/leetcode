@@ -25,6 +25,7 @@ function recurFib(n) {
   return recurFib(n - 1) + recurFib(n - 2)
 }
 
+
 // 迭代版本
 function iterFib(n) {
   var last = 1

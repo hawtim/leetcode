@@ -28,8 +28,9 @@ function forEach(array, iteratee) {
 }
 
 function isObject(target) {
-  const type = typeof target
-  return target !== null && (type === 'object' || type === 'function')
+  return getType(target) === '[object Object]'
+  // const type = typeof target
+  // return target !== null && (type === 'object' || type === 'function')
 }
 
 function getType(target) {
@@ -123,12 +124,13 @@ function deepClone(target, map = new WeakMap()) {
     })
     return cloneTarget
   }
-  // 克隆 set
+  // 克隆 map
   if (type === mapTag) {
     target.forEach((value, key) => {
       cloneTarget.set(key, deepClone(value, map))
     })
   }
+  // 如果是数组
   const keys = type === arrayTag ? undefined : Object.keys(target)
   forEach(keys || target, (value, key) => {
     if (keys) {
