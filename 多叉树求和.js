@@ -47,3 +47,54 @@ function getSum(node) {
 }
 
 console.log(getSum(node))
+
+// function getSum(node, temp = []) {
+//   if (node === null) return 0
+//   temp.push(node.value)
+//   let children = node.children
+//   if (!children || children.length === 0) return ''
+//   // 每个节点下的 children 可能有多个，每一个都要递归一遍
+//   for (let i = 0; i < children.length; i++) {
+//     temp.push(getSum(children[i]), temp)
+//   }
+//   return temp
+// }
+
+// console.log(getSum(node, []))
+
+function traverseTree(node) {
+  if (!node) return
+  traverseNode(node)
+  if (node.children && node.children.length > 0) {
+    for (var i = 0; i < node.children.length; i++) {
+      traverseTree(node.children[i])
+    }
+  }
+}
+var temp = 0
+function traverseNode(node) {
+  temp += node.value
+}
+
+console.log(temp)
+
+function nSum() {
+  // 多叉树遍历
+  function traverseTree(node) {
+    if (!node) return
+    traverseNode(node)
+    if (node.children && node.children.length > 0) {
+      for (var i = 0; i < node.children.length; i++) {
+        traverseTree(node.children[i])
+      }
+    }
+  }
+  var temp = 0
+  function traverseNode(node) {
+    temp += node.value
+  }
+  traverseTree(node)
+  return temp
+}
+
+
