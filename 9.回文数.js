@@ -46,9 +46,38 @@
  * @param {number} x
  * @return {boolean}
  */
+// 转换为字符串的
 var isPalindrome = function (x) {
   if (x < 0) return false
   if (x.toString().split('').reverse().join('') == x) return true
   return false
 }
+
+// 不转换为字符串的
+
+/**
+ * @param {number} x
+ * @return {boolean}
+ */
+var isPalindrome = function(x) {
+  if (x < 0) return false
+  if (0 < x && x < 10) return true
+  var arr = numberToArrayReverse(x)
+  var reverseX = 0
+  for (var i = 0; i < arr.length; i++) {
+    reverseX += arr[i] * Math.pow(10, arr.length - 1 - i)
+  }
+  return reverseX == x
+};
+// 将数字直接转为反序数组
+var numberToArrayReverse = function(x) {
+  var arr = []
+  while (x > 1) {
+    // 这里必须要 Math.floor 来确保小于0 的科学计数法变成整数的问题
+    arr.push(Math.floor(x % 10))
+    x /= 10
+  }
+  return arr
+}
+
 // @lc code=end
