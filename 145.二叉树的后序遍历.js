@@ -43,17 +43,20 @@
  * @param {TreeNode} root
  * @return {number[]}
  */
-// var postorderTraversal = function(root, array = []) {
-//   if (root) {
-//     postorderTraversal(root.left, array)
-//     postorderTraversal(root.right, array)
-//     array.push(root.val)
-//   }
-//   return array
-// };
+var postorderTraversal = function(root, array = []) {
+  if (root) {
+    postorderTraversal(root.left, array)
+    postorderTraversal(root.right, array)
+    array.push(root.val)
+  }
+  return array
+};
 // 参考这篇解说：https://leetcode-cn.com/problems/binary-tree-postorder-traversal/solution/er-cha-shu-de-hou-xu-bian-li-by-leetcode-solution/
+// 按照访问左子树——右子树——根节点的方式遍历这棵树，而在访问左子树或者右子树的时候，我们按照同样的方式遍历，直到遍历完整棵树。因此整个遍历过程天然具有递归的性质，我们可以直接用递归函数来模拟这一过程。
+
 var postorderTraversal = function(root) {
   var res = []
+  // 使用一个栈的空间
   if (!root) return res
   var stack = []
   // 引入一个新的变量

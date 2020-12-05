@@ -25,6 +25,22 @@ function recurFib(n) {
   return recurFib(n - 1) + recurFib(n - 2)
 }
 
+// 递归加记忆化
+var memoRecurFib = (function() {
+  var memo = {}
+  return function (n) {
+    if (n < 2) return n // 终止条件
+    if (memo[n - 1] == undefined) {
+      memo[n - 1] = memoRecurFib(n - 1)
+    }
+    if (memo[n - 2] == undefined) {
+      memo[n - 2] = memoRecurFib(n - 2)
+    }
+    return memo[n] = memo[n - 2] + memo[n - 1]
+  }
+})()
+
+console.log(memoRecurFib(10))
 
 // 迭代版本
 function iterFib(n) {
